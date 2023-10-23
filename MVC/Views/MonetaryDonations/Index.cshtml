@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVC.Models.MonetaryDonation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Add a new Monetary Donation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.donatorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.moneyAmount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.donatorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moneyAmount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.moneyId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.moneyId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.moneyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

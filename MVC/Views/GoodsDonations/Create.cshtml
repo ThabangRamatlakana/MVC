@@ -1,0 +1,73 @@
+﻿@model MVC.Models.GoodsDonation
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .control-label {
+        color: orange;
+    }
+</style>
+
+<h4 class="text-center">Add Goods Donation</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="donatorName" class="control-label"></label>
+                <input asp-for="donatorName" class="form-control" />
+                <span asp-validation-for="donatorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="donationDate" class="control-label"></label>
+                <input asp-for="donationDate" class="form-control" />
+                <span asp-validation-for="donationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goodsCategory" class="control-label"></label>
+                <select asp-for="goodsCategory" class="form-control" id="goodsCategoryDropdown">
+                    <option value="">Select a category:</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Non-perishable foods">Non-perishable foods</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" asp-for="otherCategory" class="form-control" id="otherCategoryTextBox" style="display: none;" />
+                <span asp-validation-for="goodsCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numberOfItems" class="control-label"></label>
+                <input asp-for="numberOfItems" class="form-control" />
+                <span asp-validation-for="numberOfItems" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goodsDescription" class="control-label"></label>
+                <input asp-for="goodsDescription" type="text" class="form-control" />
+                <span asp-validation-for="goodsDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="ADD" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-action="Index">View all goods donated</a>
+</div>
+<script>
+    document.getElementById("goodsCategoryDropdown").addEventListener("change", function () {
+        var selectedValue = this.value;
+        if (selectedValue === "Other") {
+            document.getElementById("otherCategoryTextBox").style.display = "block";
+        } else {
+            document.getElementById("otherCategoryTextBox").style.display = "none";
+        }
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

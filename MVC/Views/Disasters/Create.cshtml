@@ -1,0 +1,61 @@
+﻿@model MVC.Models.Disaster
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .control-label {
+        color: orange;
+    }
+</style>
+
+<h4 class="text-center">Add Disaster</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="disasterName" class="control-label"></label>
+                <input asp-for="disasterName" class="form-control" />
+                <span asp-validation-for="disasterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="startDate" class="control-label"></label>
+                <input asp-for="startDate" class="form-control" />
+                <span asp-validation-for="startDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="endDate" class="control-label"></label>
+                <input asp-for="endDate" class="form-control" />
+                <span asp-validation-for="endDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="location" class="control-label"></label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="disasterDescription" class="control-label"></label>
+                <input asp-for="disasterDescription" class="form-control" />
+                <span asp-validation-for="disasterDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="aidType" class="control-label"></label>
+                <input asp-for="aidType" class="form-control" />
+                <span asp-validation-for="aidType" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="ADD" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-action="Index">View Disasters</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
